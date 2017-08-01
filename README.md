@@ -2,3 +2,5 @@ Shell prompt for fish shell
 ```
 mv config.fish ~/.config/fish/
 ```
+
+![](images/demo.png)
