@@ -1,5 +1,3 @@
-source ~/alias_script/main_alias
-
 set -g -x PATH /usr/local/bin $PATH
 
 
