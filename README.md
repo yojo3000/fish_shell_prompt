@@ -1,6 +1,6 @@
 Shell prompt for fish shell
 ```
-mv config.fish ~/.config/fish/
+git clone https://github.com/yojo3000/fish_shell_prompt.git ~/fish_shell_prompt; sh ~/fish_shell_prompt/install.sh
 ```
 
 ![](images/demo.png)
