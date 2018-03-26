@@ -1,5 +1,12 @@
 set -g -x PATH /usr/local/bin $PATH
 
+alias drm="docker rm -f (docker ps -a -q)"
+alias di="docker images"
+alias dp="docker ps"
+alias dpa="docker ps -a"
+alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)"
+
+alias infosys="cat ~/.monitor.sh | bash"
 
 function fish_prompt
 	echo -e
