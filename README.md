@@ -27,3 +27,8 @@ alias dpa="docker ps -a"
 alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)"
 alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 ```
+
+### Docker tags search:
+```
+dtag "image_name
+```
