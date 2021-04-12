@@ -28,12 +28,15 @@ function fish_prompt
 	echo -n (pwd)' '
 
 	set_color white
-	echo -n '('(date +"%Y/%m/%d %I:%M %p")') '
+	echo -n '('(date +"%H:%M")', '
 
-	set_color blue
+	set_color white
+	echo -n ''(date +"%Y/%m/%d")') '
+
+	set_color 33ceff
 
 	if [ $git_branch ]
-		echo -n '('$git_branch')'
+		echo -n '('$git_branch', Branch)'
 	end
 
 	echo -e
