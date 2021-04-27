@@ -3,11 +3,29 @@ set -g -x PATH /usr/local/bin $PATH
 alias drm="docker rm -f (docker ps -a -q)"
 alias di="docker images"
 alias dp="docker ps"
-alias dpa="docker ps -a"
+alias dpa=docker_ps_format_running
+alias dpaexit=docker_ps_format_exit
 alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)"
 alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 
 alias infosys="cat ~/.monitor.sh | bash"
+
+
+set dpa_id (set_color FFE66F)'ID:\t{{.ID}}\t\t'
+set dpa_state (set_color D2A2CC)'State:\t{{.State}}\t\t'
+set dpa_size (set_color FF5151)'Size:\t{{.Size}}\t\t'
+set dpa_status (set_color ADADAD)'Status:\t{{.Status}}\n'
+set dpa_name (set_color 02DF82)'Name:\t{{.Names}}\n'
+set dpa_image (set_color 84C1FF)'Image:\t{{.Image}}\n'
+set dpa_port (set_color FF8040)'Ports:\t{{.Ports}}\n'
+
+function docker_ps_format_exit
+	docker ps --filter "status=exited" --format $dpa_name$dpa_image$dpa_port$dpa_id$dpa_state$dpa_size$dpa_status
+end
+
+function docker_ps_format_running
+	docker ps --filter "status=running" --format $dpa_name$dpa_image$dpa_port$dpa_id$dpa_state$dpa_size$dpa_status
+end
 
 function fish_prompt
 	echo -e

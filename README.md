@@ -23,7 +23,8 @@ git config --global alias.logs "log --graph --abbrev-commit --decorate --date=re
 alias drm="docker rm -f (docker ps -a -q)"
 alias di="docker images"
 alias dp="docker ps"
-alias dpa="docker ps -a"
+alias dpa=docker_ps_format_running (self defined function)
+alias dpaexit=docker_ps_format_exit (self defined function)
 alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)"
 alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 ```
