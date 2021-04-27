@@ -25,6 +25,7 @@ alias di="docker images"
 alias dp="docker ps"
 alias dpa=docker_ps_format_running (self defined function)
 alias dpaexit=docker_ps_format_exit (self defined function)
+alias dpaother=docker_ps_format_others (self defined function)
 alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)"
 alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 ```

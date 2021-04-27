@@ -5,6 +5,7 @@ alias di="docker images"
 alias dp="docker ps"
 alias dpa=docker_ps_format_running
 alias dpaexit=docker_ps_format_exit
+alias dpaother=docker_ps_format_others
 alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)"
 alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 
@@ -20,11 +21,26 @@ set dpa_image (set_color 84C1FF)'Image:\t{{.Image}}\n'
 set dpa_port (set_color FF8040)'Ports:\t{{.Ports}}\n'
 
 function docker_ps_format_exit
-	docker ps --filter "status=exited" --format $dpa_name$dpa_image$dpa_port$dpa_id$dpa_state$dpa_size$dpa_status
+	docker ps \
+	--filter "status=exited" \
+	--format $dpa_name$dpa_image$dpa_port$dpa_id$dpa_state$dpa_size$dpa_status
 end
 
 function docker_ps_format_running
-	docker ps --filter "status=running" --format $dpa_name$dpa_image$dpa_port$dpa_id$dpa_state$dpa_size$dpa_status
+	docker ps \
+	--filter "status=running" \
+	--format $dpa_name$dpa_image$dpa_port$dpa_id$dpa_state$dpa_size$dpa_status
+end
+
+function docker_ps_format_others
+
+	docker ps \
+	--filter "status=created" \
+	--filter "status=restarting" \
+	--filter "status=removing" \
+	--filter "status=paused" \
+	--filter "status=dead" \
+	--format $dpa_name$dpa_image$dpa_port$dpa_id$dpa_state$dpa_size$dpa_status
 end
 
 function fish_prompt
