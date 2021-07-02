@@ -1,5 +1,6 @@
 set -g -x PATH /usr/local/bin $PATH
 
+alias tmux="tmux -2"
 alias drm="docker rm -f (docker ps -a -q)"
 alias di="docker images"
 alias dp="docker ps"
