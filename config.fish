@@ -47,7 +47,7 @@ end
 function fish_prompt
 	echo -e
 
-	set -l git_branch (git branch ^/dev/null | sed -n '/\* /s///p')
+	set -l git_branch (git branch 2>/dev/null | sed -n '/\* /s///p')
 
 	set_color FFCC22
 	echo -n (whoami)
