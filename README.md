@@ -34,3 +34,9 @@ alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 ```
 dtag "image_name
 ```
+
+### Host command execute inside container by using nsenter
+```
+dcmd "container_name_or_id" "command"
+e.g.: dcmd mysql_container netstat -tpnl
+```

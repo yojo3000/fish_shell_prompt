@@ -12,6 +12,10 @@ alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 
 alias infosys="cat ~/.monitor.sh | bash"
 
+function dcmd
+	nsenter -t (docker inspect -f '{{.State.Pid}}' $argv[1]) -n $argv[2..-1]
+end
+funcsave dcmd
 
 set dpa_id (set_color FFE66F)'ID:\t{{.ID}}\t\t'
 set dpa_state (set_color D2A2CC)'State:\t{{.State}}\t\t'
@@ -47,7 +51,7 @@ end
 function fish_prompt
 	echo -e
 
-	set -l git_branch (git branch ^/dev/null | sed -n '/\* /s///p')
+	set -l git_branch (git branch 2>/dev/null | sed -n '/\* /s///p')
 
 	set_color FFCC22
 	echo -n (whoami)
