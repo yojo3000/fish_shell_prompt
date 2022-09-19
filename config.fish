@@ -1,4 +1,3 @@
-set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH $HOME/.local/bin $PATH
 
 alias tmux="tmux -2"
@@ -16,7 +15,7 @@ alias infosys="cat ~/.monitor.sh | bash"
 function dcmd
 	nsenter -t (docker inspect -f '{{.State.Pid}}' $argv[1]) -n $argv[2..-1]
 end
-funcsave dcmd
+#funcsave dcmd
 
 set dpa_id (set_color FFE66F)'ID:\t{{.ID}}\t\t'
 set dpa_state (set_color D2A2CC)'State:\t{{.State}}\t\t'
