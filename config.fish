@@ -1,4 +1,4 @@
-set -g -x PATH $HOME/.local/bin $PATH
+set -g -x PATH /usr/local/bin $PATH
 
 alias tmux="tmux -2"
 alias drm="docker rm -f (docker ps -a -q)"
@@ -9,14 +9,14 @@ alias dpaexit=docker_ps_format_exit
 alias dpaother=docker_ps_format_others
 alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)"
 alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
-alias dtag=/usr/local/bin/dtag.py
 
 alias infosys="cat ~/.monitor.sh | bash"
 
-function dcmd
-	nsenter -t (docker inspect -f '{{.State.Pid}}' $argv[1]) -n $argv[2..-1]
+alias iplocation=ip_location
+
+function ip_location
+	curl https://ipinfo.io/$argv
 end
-#funcsave dcmd
 
 set dpa_id (set_color FFE66F)'ID:\t{{.ID}}\t\t'
 set dpa_state (set_color D2A2CC)'State:\t{{.State}}\t\t'
