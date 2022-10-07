@@ -13,6 +13,8 @@ alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 
 alias infosys="cat ~/.monitor.sh | bash"
 
+alias dtag="/usr/local/bin/dtag.py"
+
 alias iplocation=ip_location
 
 function ip_location
