@@ -1,5 +1,7 @@
 set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH $HOME/.local/bin $PATH
+set -x LC_ALL en_US.UTF-8
+set -x LC_CTYPE en_US.UTF-8
 
 alias tmux="tmux -2"
 alias drm="docker rm -f (docker ps -a -q)"
