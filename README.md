@@ -5,7 +5,7 @@ sh ~/fish_shell_prompt/install.sh; \
 source ~/.config/fish/config.fish;
 ```
 
-![](images/demo.png)
+![](images/demo.PNG)
 
 #### System Info:
 ```

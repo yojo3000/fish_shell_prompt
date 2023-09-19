@@ -1,7 +1,6 @@
 set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH $HOME/.local/bin $PATH
-set -x LC_ALL en_US.UTF-8
-set -x LC_CTYPE en_US.UTF-8
+set -g -x PATH $HOME/.krew/bin $PATH
 
 alias tmux="tmux -2"
 alias drm="docker rm -f (docker ps -a -q)"
@@ -14,8 +13,6 @@ alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)
 alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 
 alias infosys="cat ~/.monitor.sh | bash"
-
-alias dtag="/usr/local/bin/dtag.py"
 
 alias iplocation=ip_location
 
@@ -81,12 +78,23 @@ function fish_prompt
 	set_color 33ceff
 
 	if [ $git_branch ]
-		echo -n '('$git_branch', Branch)'
+		echo -n '(G: '$git_branch') '
 	end
 
-	echo -e
+
+	set_color yellow
+
+	if test (whoami) = 'root'
+		set -l k8s_ns (kubectl config view --minify -o jsonpath='{..namespace}')
+		if [ $k8s_ns ]
+			echo -n '(K: '$k8s_ns')'
+		end
+	end
+
 
 	set_color blue
+
+	echo -e
 	echo -n '> '
 
 end
