@@ -12,6 +12,8 @@ alias dpaother=docker_ps_format_others
 alias drmnone="docker rmi (docker images --filter "dangling=true" -q --no-trunc)"
 alias drmexit="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm"
 
+alias kk=kubectl
+
 alias dtag=/usr/local/bin/dtag.py
 
 alias infosys="cat ~/.monitor.sh | bash"
