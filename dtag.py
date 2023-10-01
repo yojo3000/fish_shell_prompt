@@ -21,13 +21,16 @@ if "results" not in response.json():
     print("\nNo tag exist, Please check the image info")
     sys.exit(0)
 
+# print(json.dumps(response.json(), indent=4))
+
 for each_result in response.json()["results"]:
 
-    output_str  = "last_updated: "
-    output_str  += each_result["last_updated"].split("T")[0]
-    output_str  += "\t"
-    output_str  += "tag: "
-    output_str  += each_result["name"]
+    if each_result["last_updated"]:
+        output_str  = "last_updated:\t"
+        output_str  += each_result["last_updated"].split("T")[0]
+        output_str  += "\t"
+        output_str  += "tag: "
+        output_str  += each_result["name"]
 
     print(output_str)
 
