@@ -56,9 +56,8 @@ function docker_ps_format_others
 end
 
 function fish_prompt
-	echo -e
 
-	set -l git_branch (git branch 2>/dev/null | sed -n '/\* /s///p')
+	echo -e
 
 	set_color FFCC22
 	echo -n (whoami)
@@ -81,17 +80,23 @@ function fish_prompt
 
 	set_color 33ceff
 
-	if [ $git_branch ]
-		echo -n '(G: '$git_branch') '
+	if type -q git
+		set -l git_branch (git branch 2>/dev/null | sed -n '/\* /s///p')
+
+		if [ $git_branch ]
+			echo -n '(G: '$git_branch') '
+		end
 	end
 
 
 	set_color yellow
 
 	if test (whoami) = 'root'
-		set -l k8s_ns (kubectl config view --minify -o jsonpath='{..namespace}' 2>/dev/null)
-		if [ $k8s_ns ]
-			echo -n '(K: '$k8s_ns')'
+		if type -q kubectl
+			set -l k8s_ns (kubectl config view --minify -o jsonpath='{..namespace}' 2>/dev/null)
+			if [ $k8s_ns ]
+				echo -n '(K: '$k8s_ns')'
+			end
 		end
 	end
 
