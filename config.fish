@@ -89,7 +89,7 @@ function fish_prompt
 	set_color yellow
 
 	if test (whoami) = 'root'
-		set -l k8s_ns (kubectl config view --minify -o jsonpath='{..namespace}')
+		set -l k8s_ns (kubectl config view --minify -o jsonpath='{..namespace}' 2>/dev/null)
 		if [ $k8s_ns ]
 			echo -n '(K: '$k8s_ns')'
 		end
