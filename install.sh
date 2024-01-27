@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir -p ~/.config/fish
 cp ~/fish_shell_prompt/config.fish ~/.config/fish/
 cp ~/fish_shell_prompt/monitor.sh ~/.monitor.sh
@@ -12,11 +14,11 @@ if test -f "$FILE"; then
 	sudo rm /usr/local/bin/dtag
 fi
 
-DIR=~/fish_shell_prompt/functions
-if ! test -d "$DIR"; then
-	mkdir ~/.config/fish/functions
+DIR=$HOME/.config/fish/functions
+if ! [ -d $DIR ] ; then
+	mkdir $DIR
 fi
 cp ~/fish_shell_prompt/functions/* ~/.config/fish/functions/
 
 
-#rm -rf ~/fish_shell_prompt
+rm -rf ~/fish_shell_prompt
