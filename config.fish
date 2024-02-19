@@ -2,6 +2,15 @@ set -g -x PATH /usr/local/bin $PATH
 set -g -x PATH $HOME/.local/bin $PATH
 set -g -x PATH $HOME/.krew/bin $PATH
 
+if not status is-interactive
+    exit
+end
+
+
+eval (ssh-agent -c)_
+ssh-add ~/.ssh/id_ed25519
+
+
 alias tmux="tmux -2"
 alias drm="docker rm -f (docker ps -a -q)"
 alias di="docker images"
