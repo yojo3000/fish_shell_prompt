@@ -6,10 +6,8 @@ if not status is-interactive
     exit
 end
 
-
-eval (ssh-agent -c)_
-ssh-add ~/.ssh/id_ed25519
-
+eval (ssh-agent -c) > /dev/null
+ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
 
 alias tmux="tmux -2"
 alias drm="docker rm -f (docker ps -a -q)"
