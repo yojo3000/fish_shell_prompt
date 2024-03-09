@@ -1,5 +1,8 @@
 set -g -x PATH /usr/local/bin $PATH
-set -g -x PATH $HOME/.local/bin $PATH
+
+if test -d $HOME/.local/bin
+	set -g -x PATH $HOME/.local/bin $PATH
+end
 
 if test -d $HOME/.krew
 	set -g -x PATH $HOME/.krew/bin $PATH
